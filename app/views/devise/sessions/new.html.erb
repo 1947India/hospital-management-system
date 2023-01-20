@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+   body{
+  margin-top: 70px;
+  margin-bottom:140px;
+  margin-left: 950px;
+  margin-right: 50px;
+  background-color: lightblue;
+  }
+body, html {
+  height: 10%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+  .field
+  {
+  margin: 8px ;
+  color:blue;
+  font-weight: bold;
+  border-radius: 25px;
+  }
+.field{
+margin: 8px 0;
+font-weight: bold;
+padding: 14px
+width:45%;
+}
+  .actions{
+  background-color: #3db0f7;
+  color: white;
+  padding: 14px 50px;
+  centre: 0px;
+  border: 2px
+  float: left;
+  width:85%;
+  }
+  .actions{
+  float: left;
+  width: 70%;
+  text-align: center;
+}
+  button{
+  color: white;
+  float: left;
+  width: 100%;
+  font-weight: bold;
+  /*background-color: #3db0f7*/
+  border-radius: 25px;
+  }
+ input{
+  width: %;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+
+}
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 25px;
+}
+.fa {
+  padding: 5px;
+  font-size: 20px;
+  width: 20px;
+  text-align: center;
+  text-decoration: none;
+  margin: 8px 28px;
+  margin-top: 40px;
+}
+/*.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}*/
+
+</style>
+<h2>Sign In</h2>
+
+<body style="background-image:url(<%= asset_path 'final.jpg' %>);
+       background-repeat: no-repeat;">
+
+  <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+  <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+  <%#= link_to "Sign up", new_registration_path(resource_name) %><br />
+   
+  <button><%= link_to "Sign Up", new_registration_path(resource_name)  %>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <%= link_to "Sign In", new_session_path(resource_name) %>
+  </button>
+<% end %>
+
+<%#- if controller_name != 'sessions' %>
+  <%#= link_to "Log in", new_session_path(resource_name) %><br />
+<%# end %>
+<div class="container">
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>  
+  
+  <div class="field" style="color:blue;">
+  <%= f.label :email %><br />
+  <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div><br>
+
+  <div class="field" style="color:blue;">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "current-password" %>
+  </div><br>
+
+  <% if devise_mapping.rememberable? %>
+  <div class="field">
+  <%= f.check_box :remember_me %>
+  <%= f.label :remember_me %>
+  </div><br>
+  
+  <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+  
+  <div class="field" style="background-color: #3db0f7;text-align: center;">
+  <%= f.submit "SignIn" %>
+  
+  </div><br>
+   <% end %>
+   <% end %>
+   <% end %>
+</div>
+</body>
+</body>
+  
+<a href="#" class="fa fa-linkedin"></a>
+<a href="#" class="fa fa-google"></a>
+<a href="#" class="fa fa-skype"></a><br>
+
+</html>

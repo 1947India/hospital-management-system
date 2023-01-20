@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+#customers tr:nth-child(even){background-color: #F2F2F2;}
+#customers tr:hover {background-color: #ddd;}
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+  </style>
+  </head>
+  <body>
+<h1>Patient Report</h1>
+<table id="customers">
+  <tr>
+    <th>Disease</th>
+    <th>Appointment Date</th>
+    <th>Doctor</th>
+    <th>Uplode Report</th>
+    <th>Download Report</th>
+  <% @report.each do |report| %>
+  <tr>
+ <tr>
+  <td><%=report.disease %></td>
+<td><%= PatientAppointment.find_by(user_id:current_user.id).appointment_date%></td>
+
+ <td><%= PatientAppointment.find_by(user_id:current_user.id).doctor.fullname%>
+  <td><%= link_to 'view',report %></td>
+    <td><%= link_to 'Download PDF', "http://localhost:3000/report/index.pdf" %></td>
+</td>
+  </tr>
+ <% end %>
+</table>
+</body>
+</html>
